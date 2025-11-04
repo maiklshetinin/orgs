@@ -39,7 +39,7 @@ export function createOrgStore() {
   function addOrg(org: Organization) {
     organizations.push({
       ...org,
-      id: Math.random().toString(36).slice(2, 9),
+      id: crypto.randomUUID(),
     });
     notify();
   }

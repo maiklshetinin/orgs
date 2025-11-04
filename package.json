@@ -5,9 +5,8 @@
   "main": "src/main.ts",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/main.ts",
-    "start": "tsx src/main.ts",
-    "build": "tsc --watch"
+    "dev": "tsc --watch",
+    "start": "tsx src/main.ts"
   },
   "repository": {
     "type": "git",

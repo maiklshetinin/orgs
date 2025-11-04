@@ -1,0 +1,27 @@
+{
+  "name": "ts-app",
+  "version": "1.0.0",
+  "description": "версия на TypeScript",
+  "main": "src/main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maiklshetinin/orgs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maiklshetinin/orgs/issues"
+  },
+  "homepage": "https://github.com/maiklshetinin/orgs#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "tsx": "^4.19.0"
+  }
+}

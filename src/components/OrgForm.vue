@@ -22,7 +22,7 @@ const emit = defineEmits<{
 const title = computed(() => (initial.value ? 'Редактировать организацию' : 'Добавить организацию'))
 
 const defaultValue: Organization = {
-  id: Math.random().toString(36).slice(2, 9),
+  id: crypto.randomUUID(),
   name: '',
   director: '',
   phone: '',

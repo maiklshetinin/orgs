@@ -6,7 +6,7 @@ type SortDir = "asc" | "desc";
 type Listener = () => void;
 
 export function createOrgStore() {
-  // --- state ---
+  //state
   let organizations: Organization[] = [
     {
       id: "1",
@@ -30,12 +30,12 @@ export function createOrgStore() {
 
   const listeners: Listener[] = [];
 
-  // --- internal notify ---
+  //internal notify
   function notify() {
     listeners.forEach((cb) => cb());
   }
 
-  // --- CRUD ---
+  //CRUD
   function addOrg(org: Organization) {
     organizations.push({
       ...org,
@@ -57,7 +57,7 @@ export function createOrgStore() {
     notify();
   }
 
-  // --- фильтр и сортировка ---
+  //фильтр и сортировка
   function getFilteredOrgs(): Organization[] {
     let list = [...organizations];
     const q = search.trim().toLowerCase();
@@ -76,7 +76,7 @@ export function createOrgStore() {
     return list;
   }
 
-  // --- setters ---
+  //setters
   function setSearch(value: string) {
     search = value;
     notify();
@@ -88,7 +88,7 @@ export function createOrgStore() {
     notify();
   }
 
-  // --- подписка ---
+  //подписка
   function subscribe(cb: Listener) {
     listeners.push(cb);
     return () => {
@@ -97,22 +97,22 @@ export function createOrgStore() {
     };
   }
 
-  // --- публичный API ---
+  //API
   return {
-    // state getters
+    //getters
     getOrgs: () => organizations,
     getFilteredOrgs,
     getSearch: () => search,
     getSort: () => ({ sortKey, sortDir }),
 
-    // actions
+    //actions
     addOrg,
     updateOrg,
     deleteOrg,
     setSearch,
     setSort,
 
-    // реактивность
+    //реактивность
     subscribe,
   };
 }

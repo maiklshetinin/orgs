@@ -22,12 +22,12 @@ export function createOrgTable(
     const start = (currentPage - 1) * pageSize;
     const paginated = orgs.slice(start, start + pageSize);
 
-    // ===== TABLE WRAPPER =====
+    //Создаём таблицу
     const table = document.createElement("table");
     table.className = "org-table";
     table.style.width = "100%";
 
-    // ===== HEADER =====
+    //Заголовок таблицы
     table.innerHTML = `
       <thead>
         <tr>
@@ -56,7 +56,7 @@ export function createOrgTable(
       </tbody>
     `;
 
-    // ===== SORT HANDLERS =====
+    //Сортировка по клику на заголовок
     table.querySelectorAll("th.sortable").forEach((th) => {
       th.addEventListener("click", () => {
         const key = th.getAttribute("data-key") as "name" | "director";
@@ -66,16 +66,18 @@ export function createOrgTable(
       });
     });
 
-    // ===== ROW CLICK HANDLERS =====
+    //Обработка кликов по строкам и кнопкам удаления
     table.querySelectorAll("tbody tr").forEach((row) => {
       const id = row.getAttribute("data-id")!;
       const delBtn = row.querySelector(".delete-btn")! as HTMLButtonElement;
 
+      // Клик по кнопке удаления
       delBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         handlers.onDelete?.(id);
       });
 
+      // Клик по строке таблицы (открываем режим редактирования)
       row.addEventListener("click", (e) => {
         if ((e.target as HTMLElement).classList.contains("delete-btn")) return;
         const org = orgs.find((o) => o.id === id);
@@ -85,7 +87,7 @@ export function createOrgTable(
 
     container.appendChild(table);
 
-    // ===== PAGINATION =====
+    //Пагинация
     const totalPages = Math.ceil(orgs.length / pageSize);
     if (totalPages > 1) {
       const pagination = document.createElement("div");
@@ -106,7 +108,7 @@ export function createOrgTable(
     }
   }
 
-  // подписываемся на обновления стора
+  //Подписка на обновления стора
   store.subscribe(render);
 
   return { render };

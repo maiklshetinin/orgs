@@ -93,7 +93,7 @@ export function createOrgForm(
     const house = form.querySelector("#house") as HTMLInputElement;
     const saveBtn = form.querySelector("#save") as HTMLButtonElement;
 
-    // Если редактируем — заполняем поля
+    // Если редактируем (заполняем поля)
     if (org) {
       name.value = org.name;
       director.value = org.director;

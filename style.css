@@ -110,7 +110,7 @@ body {
   border-color: #3a8ee6;
 }
 
-/*Таблица*/
+/*Таблица */
 .org-table {
   width: 100%;
   border-collapse: collapse;
@@ -129,10 +129,11 @@ body {
   text-overflow: ellipsis;
 }
 
+/*Заголовок */
 .org-table th {
-  background: #f9f9f9;
   font-weight: 600;
-  color: #333;
+  color: #303133;
+  background-color: #fff;
   user-select: none;
 }
 
@@ -144,12 +145,21 @@ body {
   color: #1677ff;
 }
 
-.org-table tr:nth-child(even) {
+/*Строки таблицы */
+.org-table tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
 
-.org-table tr:hover {
-  background-color: #f1f1f1;
+
+.org-table tbody tr:hover {
+  background-color: #f5f7fa;
+  transition: background-color 0.15s ease-in-out;
+}
+
+/*Активная строка*/
+.org-table tbody tr.active {
+  background-color: #ecf5ff;
+  /* чуть темнее при клике */
 }
 
 /*Фиксированные ширины */

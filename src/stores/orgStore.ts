@@ -48,7 +48,7 @@ export const useOrgsStore = defineStore('orgs', {
     addOrg(org: Organization) {
       this.organizations.push({
         ...org,
-        id: Math.random().toString(36).slice(2, 9),
+        id: crypto.randomUUID(),
       })
     },
 
